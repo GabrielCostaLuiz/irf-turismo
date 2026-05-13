@@ -53,10 +53,12 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-gold/30 bg-gold/5 mb-8 backdrop-blur-sm"
+            className="flex items-center gap-4 mb-8"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_10px_#e5c05b] animate-pulse" />
-            <span className="text-gold uppercase tracking-[0.5em] text-[9px] font-black">Líder em Transporte Executivo</span>
+            <div className="h-px w-8 bg-gold/40" />
+            <span className="text-gold text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em] whitespace-nowrap">
+              Líder em Transporte Executivo
+            </span>
           </motion.div>
 
           {/* Main Title */}
