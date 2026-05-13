@@ -111,8 +111,9 @@ export default function ComfortFeatures() {
                 onClick={() => setActiveIndex(i)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`flex flex-col items-start text-left group relative p-6 md:p-8 rounded-[40px] transition-all duration-500  md:border! h-full  border-white/10 md:bg-transparent md:border-transparent ${activeIndex === i
+                className={`flex flex-col items-start text-left group relative  md:p-8 rounded-[40px] transition-all duration-500  md:border! h-full  border-white/10 md:bg-transparent md:border-transparent ${activeIndex === i
                   ? "md:bg-gold/10! md:border-gold/30! md:shadow-[0_30px_60px_rgba(0,0,0,0.3)] md:scale-[1.02] md:z-20"
                   : "md:bg-transparent md:border-transparent md:hover:bg-white/5 md:z-10"
                   }`}

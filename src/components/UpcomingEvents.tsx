@@ -64,7 +64,7 @@ export default function UpcomingEvents() {
   const displayedEvents = showAll ? upcomingEvents : upcomingEvents.slice(0, 3);
 
   return (
-    <section id="eventos" className="py-24 bg-navy-dark relative overflow-hidden scroll-mt-[133px]">
+    <section id="eventos" className="py-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-sparkle opacity-10 pointer-events-none" />
 
@@ -76,22 +76,23 @@ export default function UpcomingEvents() {
           description="Reserve sua vaga para os principais shows e festivais. Transporte com conforto e segurança."
           className="mb-0!"
         />
- <div className="mt-2 text-left">
+        <div className="mt-2 text-left">
           <p className="text-white/30 text-sm">
             Tem um evento específico e não encontrou aqui? <a href="#reservas" className="text-gold font-bold hover:underline">Solicite um orçamento personalizado.</a>
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+
           <AnimatePresence mode="popLayout">
             {displayedEvents.map((event, index) => (
               <motion.div
                 key={event.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group relative bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:border-gold/30 transition-all duration-500"
               >
                 {/* Image Header */}
@@ -107,8 +108,8 @@ export default function UpcomingEvents() {
                   {/* Status Badge */}
                   <div className="absolute top-4 left-4">
                     <div className={`px-4 py-1.5 backdrop-blur-md text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg flex items-center gap-2 ${event.seatsLeft > 0
-                        ? "bg-gold/90 text-navy-dark"
-                        : "bg-white/20 text-white/60"
+                      ? "bg-gold/90 text-navy-dark"
+                      : "bg-white/20 text-white/60"
                       }`}>
                       {event.seatsLeft > 0 ? "Vagas Disponíveis" : "Esgotado"}
                     </div>
@@ -179,7 +180,7 @@ export default function UpcomingEvents() {
           </div>
         )}
 
-       
+
       </div>
     </section>
   );

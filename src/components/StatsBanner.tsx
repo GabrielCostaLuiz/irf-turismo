@@ -39,6 +39,7 @@ export default function StatsBanner() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-10"
           >
             <Sparkles size={12} className="animate-pulse" />
@@ -48,6 +49,7 @@ export default function StatsBanner() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-3xl md:text-6xl font-heading font-bold leading-[1.1] tracking-tight text-white flex flex-wrap items-center justify-center gap-x-4 gap-y-6"
           >
             <span>Nesta</span>
@@ -74,6 +76,7 @@ export default function StatsBanner() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="mt-14"
           >
@@ -93,8 +96,9 @@ export default function StatsBanner() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="text-center lg:text-left group bg-white/3 backdrop-blur-md p-8 rounded-[32px] border border-white/5 hover:border-gold/20 transition-all"
+              className="text-center lg:text-left group lg:bg-white/3 lg:backdrop-blur-md lg:p-8 lg:rounded-[32px] lg:border lg:border-white/5 hover:border-gold/20 transition-all"
             >
               <div className="text-5xl md:text-6xl font-black gold-gradient mb-4 group-hover:scale-110 transition-transform origin-left duration-500 tracking-tighter drop-shadow-2xl">
                 {stat.value}

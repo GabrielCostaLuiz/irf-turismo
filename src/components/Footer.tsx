@@ -24,7 +24,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-24">
           
           {/* Brand Column */}
-          <div className="lg:col-span-5 space-y-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 space-y-10"
+          >
             <Link href="/" className="inline-block group">
               <div className="flex items-center gap-5">
                 <div className="relative w-20 h-20 logo-glow group-hover:scale-105 transition-transform duration-500">
@@ -63,13 +68,25 @@ export default function Footer() {
                 Siga nossa jornada <br /> no Instagram
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Links Columns */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-16"
+          >
             
             {/* Contact Info */}
-            <div className="space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="space-y-8"
+            >
               <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] flex items-center gap-3">
                 <span className="w-8 h-px bg-gold/50" />
                 Contato Direto
@@ -106,7 +123,7 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Navigation */}
             <div className="space-y-8">
@@ -147,8 +164,7 @@ export default function Footer() {
                 </button>
               </div>
             </div>
-
-          </div>
+          </motion.div>
         </div>
 
         {/* Final Line */}

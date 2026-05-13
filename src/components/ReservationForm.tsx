@@ -20,7 +20,7 @@ export default function ReservationForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     const formatDate = (dateStr: string) => {
       if (!dateStr) return "";
       const [year, month, day] = dateStr.split("-");
@@ -36,7 +36,7 @@ export default function ReservationForm() {
       `Aguardo o retorno!`;
 
     const whatsappUrl = `https://wa.me/5511977674215?text=${encodeURIComponent(message)}`;
-    
+
     setTimeout(() => {
       window.open(whatsappUrl, "_blank");
       setIsSubmitting(false);
@@ -47,23 +47,35 @@ export default function ReservationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const isFormValid = 
-    formData.nome.trim() !== "" && 
-    formData.data !== "" && 
-    formData.passageiros !== "" && 
-    formData.origem.trim() !== "" && 
+  const isFormValid =
+    formData.nome.trim() !== "" &&
+    formData.data !== "" &&
+    formData.passageiros !== "" &&
+    formData.origem.trim() !== "" &&
     formData.destino.trim() !== "";
 
   return (
-    <section id="reservas" className="py-24 bg-navy-dark relative overflow-hidden scroll-mt-[133px]">
-  
+    <section id="reservas" className="py-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
+
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[48px] overflow-hidden shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[48px] overflow-hidden shadow-2xl"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            
+
             {/* Left Side: Info */}
-            <div className="p-8 md:p-16 bg-linear-to-br from-white/5 to-transparent">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="p-8 md:p-16 bg-linear-to-br from-white/5 to-transparent"
+            >
               <div className="text-gold text-sm font-bold uppercase tracking-[0.3em] mb-6">Agendamento Online</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
                 Reserve sua <span className="gold-gradient">Experiência VIP</span>
@@ -89,19 +101,25 @@ export default function ReservationForm() {
                   "Comprometidos com a pontualidade e segurança em cada km percorrido."
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Side: Form */}
-            <div className="p-8 md:p-16">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="p-8 md:p-16"
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
                       Nome Completo <span className="text-gold">*</span>
                     </label>
-                    <input 
+                    <input
                       required
-                      type="text" 
+                      type="text"
                       name="nome"
                       value={formData.nome}
                       onChange={handleChange}
@@ -112,7 +130,7 @@ export default function ReservationForm() {
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Tipo de Viagem</label>
                     <div className="relative">
-                      <select 
+                      <select
                         name="tipo"
                         value={formData.tipo}
                         onChange={handleChange}
@@ -133,9 +151,9 @@ export default function ReservationForm() {
                       Data do Serviço <span className="text-gold">*</span>
                     </label>
                     <div className="relative">
-                      <input 
+                      <input
                         required
-                        type="date" 
+                        type="date"
                         name="data"
                         value={formData.data}
                         onChange={handleChange}
@@ -149,9 +167,9 @@ export default function ReservationForm() {
                       Passageiros <span className="text-gold">*</span>
                     </label>
                     <div className="relative">
-                      <input 
+                      <input
                         required
-                        type="number" 
+                        type="number"
                         min="1"
                         max="20"
                         name="passageiros"
@@ -170,9 +188,9 @@ export default function ReservationForm() {
                     Local de Origem <span className="text-gold">*</span>
                   </label>
                   <div className="relative">
-                    <input 
+                    <input
                       required
-                      type="text" 
+                      type="text"
                       name="origem"
                       value={formData.origem}
                       onChange={handleChange}
@@ -188,9 +206,9 @@ export default function ReservationForm() {
                     Destino Final <span className="text-gold">*</span>
                   </label>
                   <div className="relative">
-                    <input 
+                    <input
                       required
-                      type="text" 
+                      type="text"
                       name="destino"
                       value={formData.destino}
                       onChange={handleChange}
@@ -202,7 +220,7 @@ export default function ReservationForm() {
                 </div>
 
                 <div className="pt-6">
-                  <button 
+                  <button
                     disabled={isSubmitting || !isFormValid}
                     type="submit"
                     className="w-full bg-gold-premium py-4 md:py-5 rounded-2xl flex items-center justify-center gap-3 disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed group transition-all"
@@ -217,9 +235,9 @@ export default function ReservationForm() {
                   </p>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -11,112 +11,138 @@ const services = [
     icon: <Plane className="w-8 h-8" />,
     title: "Transfers Executivos",
     subtitle: "Aeroportos e Hotéis",
-    description: "Recepção personalizada com placa e auxílio com bagagens nos principais aeroportos de SP."
+    description: "Recepção personalizada com placa e auxílio com bagagens nos principais aeroportos de SP.",
+    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&auto=format",
+    featured: true
   },
   {
     id: "02",
     icon: <PartyPopper className="w-8 h-8" />,
     title: "Eventos Sociais",
     subtitle: "Casamentos e Festas",
-    description: "Transporte elegante para noivos e convidados, garantindo segurança e pontualidade total."
+    description: "Transporte elegante para noivos e convidados, garantindo segurança e pontualidade total.",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format",
+    featured: false
   },
   {
     id: "03",
     icon: <Briefcase className="w-8 h-8" />,
     title: "Logística Corporativa",
     subtitle: "Reuniões e Congressos",
-    description: "Coordenação completa de transporte para grandes grupos e executivos individuais com discrição."
+    description: "Coordenação completa de transporte para grandes grupos e executivos individuais com discrição.",
+    image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800&auto=format",
+    featured: false
   },
   {
     id: "04",
-    icon: <Map className="w-8 h-8" />,
-    title: "Turismo & City Tour",
-    subtitle: "Passeios Customizados",
-    description: "Roteiros exclusivos pelos principais pontos turísticos de São Paulo e região metropolitana."
+    icon: <Navigation className="w-8 h-8" />,
+    title: "Viagens Interestaduais",
+    subtitle: "Longa Distância",
+    description: "Transporte seguro e confortável para viagens entre cidades e estados com motoristas experientes.",
+    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format",
+    featured: true
   },
   {
     id: "05",
     icon: <Music className="w-8 h-8" />,
     title: "Shows e Entretenimento",
     subtitle: "Conforto e Diversão",
-    description: "Vans equipadas com sistemas premium de som e iluminação para uma experiência de bordo única."
+    description: "Vans equipadas com sistemas premium de som e iluminação para uma experiência de bordo única.",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format",
+    featured: false
   },
   {
     id: "06",
-    icon: <Navigation className="w-8 h-8" />,
-    title: "Viagens Interestaduais",
-    subtitle: "Longa Distância",
-    description: "Transporte seguro e confortável para viagens entre cidades e estados com motoristas experientes."
+    icon: <Map className="w-8 h-8" />,
+    title: "Turismo & City Tour",
+    subtitle: "Passeios Customizados",
+    description: "Roteiros exclusivos pelos principais pontos turísticos de São Paulo e região metropolitana.",
+    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800&auto=format",
+    featured: false
   }
 ];
 
 export default function PremiumServices() {
   return (
-    <section id="servicos" className="py-24 bg-navy-dark relative overflow-hidden scroll-mt-[133px]">
+    <section id="servicos" className="py-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
 
-      
+
       <div className="container mx-auto px-6 relative z-10">
-        <SectionHeader 
+        <SectionHeader
           subtitle="Nossas Soluções"
           titleNormal="Nossos"
           titleHighlight="Serviços"
+          descriptionBelow
           description="Oferecemos uma gama completa de serviços de transporte premium, focados em pontualidade, segurança e o máximo conforto."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="mt-20 border-t border-white/10">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="group relative h-full"
+              transition={{ delay: index * 0.1 }}
+              className="group border-b border-white/10 relative overflow-hidden"
             >
-              <div className="h-full bg-white/10 backdrop-blur-sm border border-gold/30 rounded-[40px] p-10 flex flex-col transition-all duration-500 md:bg-white/5 md:border-white/10 md:hover:border-gold/30 md:hover:bg-white/10">
-                
-                {/* Header: Icon & ID */}
-                <div className="flex justify-between items-start mb-10">
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-500">
-                    {service.icon}
-                  </div>
-                  <span className="text-4xl font-black text-gold/10 transition-colors md:text-white/5 md:group-hover:text-gold/10">
+              {/* Hover Background Accent */}
+              <div className="absolute inset-0 bg-gold/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out" />
+
+              <div className="relative z-10 py-12 md:py-16 px-4 md:px-10 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
+                {/* ID & Photo */}
+                <div className="flex items-center gap-8 md:w-1/4">
+                  <span className="text-4xl md:text-5xl font-black text-white/5 group-hover:text-gold/20 transition-colors leading-none tracking-tighter shrink-0">
                     {service.id}
                   </span>
+                  <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-2xl overflow-hidden border border-white/10 group-hover:border-gold/30 transition-all duration-500 shadow-2xl">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-colors" />
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <span className="text-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block">
+                {/* Title & Subtitle */}
+                <div className="md:w-1/3">
+                  <span className="text-gold/60 text-[10px] font-black uppercase tracking-[0.4em] mb-2 block">
                     {service.subtitle}
                   </span>
-                  <h3 className="text-2xl font-bold text-gold mb-6 transition-colors md:text-white md:group-hover:text-gold">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-gold transition-colors leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-white/60 text-sm leading-relaxed mb-8 transition-colors md:text-white/40 md:group-hover:text-white/60">
-                    {service.description}
-                  </p>
                 </div>
 
-                {/* Action */}
-                <motion.a
-                  href={siteConfig.phone.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-gold text-xs font-black uppercase tracking-widest group/link"
-                >
-                  Solicitar Orçamento
-                  <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
-                </motion.a>
+                {/* Description & Action */}
+                <div className="md:w-5/12 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
+                  <p className="text-white/40 text-sm leading-relaxed flex-1 group-hover:text-white/60 transition-colors max-w-sm">
+                    {service.description}
+                  </p>
+
+                  <a
+                    href={siteConfig.phone.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 flex items-center gap-4 text-gold text-[10px] font-black uppercase tracking-widest group/link"
+                  >
+                    Solicitar Orçamento
+                    <div className="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center group-hover/link:bg-gold group-hover/link:text-black transition-all">
+                      <ChevronRight size={16} className="group-hover/link:translate-x-0.5 transition-transform" />
+                    </div>
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* Floating CTA */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="mt-20 flex justify-center"
         >
           <motion.a

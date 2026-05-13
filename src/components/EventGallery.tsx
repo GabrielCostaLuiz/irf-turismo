@@ -78,6 +78,7 @@ export default function EventGallery() {
               key={item.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`group relative rounded-[40px] overflow-hidden border border-white/5 ${
                 item.size === "large" ? "md:row-span-2" : ""
