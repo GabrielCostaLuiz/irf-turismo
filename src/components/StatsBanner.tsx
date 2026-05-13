@@ -44,7 +44,7 @@ export default function StatsBanner() {
           >
             <div className="h-px w-8 md:w-12 bg-gold/30" />
             <span className="text-gold text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em] whitespace-nowrap">
-              Referência em Transporte de Luxo
+              PADRÃO DE LUXO
             </span>
             <div className="h-px w-8 md:w-12 bg-gold/30" />
           </motion.div>
@@ -53,30 +53,29 @@ export default function StatsBanner() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl md:text-6xl font-heading font-bold leading-[1.4] md:leading-[1.1] tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2 md:gap-x-4 gap-y-4 md:gap-y-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold leading-[1.4] md:leading-[1.1] tracking-tight text-white flex flex-wrap items-center justify-center gap-x-2 md:gap-x-4 gap-y-4 md:gap-y-6"
           >
             <span>Nesta</span>
-            <span className="inline-flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-gold/10 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
+            <span className="hidden sm:inline-flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-gold/10 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
               <Star className="w-5 h-5 md:w-7 md:h-7" fill="currentColor" />
             </span>
             <span>jornada de</span>
-            <span className="inline-flex items-center border border-gold/30 rounded-full bg-gold/5 backdrop-blur-sm overflow-hidden w-16 h-8 md:w-24 md:h-12 relative">
+            <span className="hidden sm:inline-flex items-center border border-gold/30 rounded-full bg-gold/5 backdrop-blur-sm overflow-hidden w-16 h-8 md:w-24 md:h-12 relative">
                <Image src="https://images.unsplash.com/photo-1468818438311-4bab781ab9b8?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill alt="Destino IRF" className="object-cover" />
             </span>
-            <span>excelência,</span>
+            <span className="gold-gradient italic">excelência,</span>
             <br className="hidden lg:block" />
             <span>elevamos o padrão</span>
-            <span className="inline-block relative w-16 h-8 md:w-28 md:h-14 align-middle rounded-full overflow-hidden border border-gold/30 shadow-2xl">
+            <span className="hidden sm:inline-block relative w-16 h-8 md:w-28 md:h-14 align-middle rounded-full overflow-hidden border border-gold/30 shadow-2xl">
                <Image src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill alt="Viajante IRF" className="object-cover" />
             </span>
             <span>com máxima</span>
-            <span className="inline-flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
+            <span className="hidden sm:inline-flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
               <Shield className="w-5 h-5 md:w-7 md:h-7" fill="currentColor" />
             </span>
             <span className="gold-gradient italic pr-2 md:pr-4">segurança.</span>
           </motion.h2>
-
-          <motion.div
+           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -88,7 +87,7 @@ export default function StatsBanner() {
               className="inline-flex max-sm:text-sm items-center gap-4 bg-gold-premium px-12 py-5 rounded-full font-heading font-black uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(229,192,91,0.3)] hover:scale-105 transition-all group text-navy-dark"
             >
               Nossas Soluções
-              <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight size={22} className="hidden sm:block  group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
           </motion.div>
         </div>
