@@ -33,7 +33,8 @@ export default function PromoBanner() {
                 href="#eventos"
                 className="bg-black/10 hover:bg-black/20 px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest text-navy-dark transition-colors flex items-center gap-2 whitespace-nowrap"
               >
-                Consultar <ArrowRight size={12} className="md:w-3.5 md:h-3.5" />
+                <span className="sm:hidden">Ver</span> 
+                <span className="hidden sm:block">Consultar</span> <ArrowRight size={12} className="md:w-3.5 md:h-3.5" />
               </a>
               <button 
                 onClick={() => setIsPromoVisible(false)}

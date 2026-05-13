@@ -5,15 +5,23 @@ import React, { createContext, useContext, useState } from "react";
 interface UIContextType {
   isPromoVisible: boolean;
   setIsPromoVisible: (visible: boolean) => void;
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
 }
 
 const UIContext = createContext<UIContextType | undefined>(undefined);
 
 export function UIProvider({ children }: { children: React.ReactNode }) {
   const [isPromoVisible, setIsPromoVisible] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <UIContext.Provider value={{ isPromoVisible, setIsPromoVisible }}>
+    <UIContext.Provider value={{ 
+      isPromoVisible, 
+      setIsPromoVisible,
+      isMobileMenuOpen,
+      setIsMobileMenuOpen
+    }}>
       {children}
     </UIContext.Provider>
   );

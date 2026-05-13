@@ -73,14 +73,14 @@ export default function PremiumServices() {
               viewport={{ once: true }}
               className="group relative h-full"
             >
-              <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-[40px] p-10 flex flex-col transition-all duration-500 hover:border-gold/30 hover:bg-white/10">
+              <div className="h-full bg-white/10 backdrop-blur-sm border border-gold/30 rounded-[40px] p-10 flex flex-col transition-all duration-500 md:bg-white/5 md:border-white/10 md:hover:border-gold/30 md:hover:bg-white/10">
                 
                 {/* Header: Icon & ID */}
                 <div className="flex justify-between items-start mb-10">
                   <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-500">
                     {service.icon}
                   </div>
-                  <span className="text-4xl font-black text-white/5 group-hover:text-gold/10 transition-colors">
+                  <span className="text-4xl font-black text-gold/10 transition-colors md:text-white/5 md:group-hover:text-gold/10">
                     {service.id}
                   </span>
                 </div>
@@ -90,10 +90,10 @@ export default function PremiumServices() {
                   <span className="text-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block">
                     {service.subtitle}
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-gold transition-colors">
+                  <h3 className="text-2xl font-bold text-gold mb-6 transition-colors md:text-white md:group-hover:text-gold">
                     {service.title}
                   </h3>
-                  <p className="text-white/40 text-sm leading-relaxed mb-8 group-hover:text-white/60 transition-colors">
+                  <p className="text-white/60 text-sm leading-relaxed mb-8 transition-colors md:text-white/40 md:group-hover:text-white/60">
                     {service.description}
                   </p>
                 </div>
@@ -125,10 +125,9 @@ export default function PremiumServices() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gold-premium px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] flex items-center gap-4 text-black shadow-2xl shadow-gold/20"
+            className="bg-gold-premium px-8 md:px-12 py-5 md:py-6 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.3em] flex items-center justify-center text-black shadow-2xl shadow-gold/20 whitespace-nowrap"
           >
             Ver Detalhes Adicionais
-            <ArrowRight size={18} />
           </motion.a>
         </motion.div>
       </div>

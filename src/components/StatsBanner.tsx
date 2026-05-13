@@ -15,24 +15,24 @@ export default function StatsBanner() {
   return (
     // <section className="py-32 bg-white/5 border-y border-gold/10 relative overflow-hidden">
     <section className="py-32  relative overflow-hidden ">
-      {/* Background Image with low opacity */}
-      <div className="absolute inset-0  pointer-events-none">
+      {/* Background Image - LG and up only */}
+      <div className="absolute inset-0 hidden lg:block pointer-events-none">
         <Image
           src="/images/bg-irf-10.png"
           alt="Background Texture"
           fill
-          className="object-fill  "
+          className="object-fill"
         />
+        <div className="absolute inset-0 bg-navy-dark/30" />
       </div>
-      
 
-      {/* Premium Shimmer Background Effects */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-30" />
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-gold/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-gold/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/5 rounded-full blur-[100px]" />
-      </div> */}
+      {/* Mobile/Tablet Decoration - Below LG */}
+      <div className="absolute inset-0 lg:hidden pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-20" />
+        <div className="absolute top-30 -left-32 w-40 h-40 bg-gold/30 rounded-full blur-[70px] animate-pulse" />
+        <div className="absolute bottom-30 -right-32 w-70 h-70 bg-gold/10 rounded-full blur-[70px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-gold/2 blur-[80px]" />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center mb-24">
@@ -94,12 +94,12 @@ export default function StatsBanner() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="text-center lg:text-left group"
+              className="text-center lg:text-left group bg-white/3 backdrop-blur-md p-8 rounded-[32px] border border-white/5 hover:border-gold/20 transition-all"
             >
-              <div className="text-5xl md:text-6xl font-black gold-gradient mb-4 group-hover:scale-110 transition-transform origin-left duration-500 tracking-tighter">
+              <div className="text-5xl md:text-6xl font-black gold-gradient mb-4 group-hover:scale-110 transition-transform origin-left duration-500 tracking-tighter drop-shadow-2xl">
                 {stat.value}
               </div>
-              <p className="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed max-w-[180px]">
+              <p className="text-white/80 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed max-w-[180px] max-lg:mx-auto">
                 {stat.label}
               </p>
             </motion.div>

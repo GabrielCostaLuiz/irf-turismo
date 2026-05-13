@@ -6,11 +6,12 @@ import Image from "next/image";
 import { Menu, X, Phone, Clock, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { useUI } from "@/context/UIContext";
 import PromoBanner from "./PromoBanner";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useUI();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,11 +21,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500  ${isScrolled
+    <nav className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled
       ? "bg-navy-dark/80 backdrop-blur-xl shadow-2xl border-b border-gold/10"
       : "bg-transparent"
-      }`}>
+      } ${isMobileMenuOpen ? "z-[999]" : "z-50"}`}>
       <PromoBanner />
 
       <div className="container mx-auto px-6">
@@ -83,14 +96,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Movido para fora do nav principal para garantir h-screen real */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="fixed inset-0 bg-navy-dark/98 z-50 flex flex-col p-10 lg:hidden"
+            initial={{ clipPath: "circle(0% at 90% 50px)", opacity: 0 }}
+            animate={{ clipPath: "circle(150% at 90% 50px)", opacity: 1 }}
+            exit={{ clipPath: "circle(0% at 90% 50px)", opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 h-screen w-screen bg-[#071529] z-[1000] flex flex-col p-10 lg:hidden overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-16">
               <div className="relative w-12 h-12">
@@ -101,15 +115,37 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col gap-10 text-2xl font-bold tracking-tighter">
-              <Link href="#servicos" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold">SERVIÇOS</Link>
-              <Link href="#van" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold">NOSSA VAN</Link>
-              <Link href="#eventos" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold">EVENTOS</Link>
-              <Link href="#galeria" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold">GALERIA</Link>
-              <Link href="#reservas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold">CONTATO</Link>
-            </div>
+            <nav className="flex flex-col gap-8">
+              {[
+                { name: "SERVIÇOS", href: "#servicos" },
+                { name: "NOSSA VAN", href: "#van" },
+                { name: "EVENTOS", href: "#eventos" },
+                { name: "GALERIA", href: "#galeria" },
+                { name: "CONTATO", href: "#reservas" },
+              ].map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                >
+                  <Link 
+                    href={link.href} 
+                    onClick={() => setIsMobileMenuOpen(false)} 
+                    className="text-3xl font-bold tracking-tighter hover:text-gold transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
 
-            <div className="mt-auto pt-10 border-t border-white/10">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-auto pt-10 border-t border-white/10"
+            >
               <motion.a
                 href={siteConfig.phone.whatsapp}
                 target="_blank"
@@ -119,7 +155,7 @@ export default function Navbar() {
                 <Phone size={18} />
                 WhatsApp
               </motion.a>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

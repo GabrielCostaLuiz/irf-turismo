@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
           titleNormal="A Diferença que Apenas a"
           titleHighlight="I.R.F Oferece"
           center
-          className="mb-24"
+          className="mb-0!"
         />
 
         <div className="mt-16 flex flex-col">
@@ -112,9 +112,9 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-5 lg:mt-10 pt-10 text-center"
+          className=" text-center"
         >
-          <p className="text-white/20 text-sm md:text-base font-light italic tracking-[0.3em]">
+          <p className="text-white/20 text-sm md:text-base font-light italic tracking-[0.3em] md:mt-10">
             "Sua jornada merece a exclusividade e o padrão de excelência I.R.F Turismo."
           </p>
         </motion.div>

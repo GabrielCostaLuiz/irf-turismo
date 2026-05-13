@@ -11,9 +11,8 @@ export default function Hero() {
   const { isPromoVisible } = useUI();
 
   return (
-    <section className={`relative min-h-screen w-full overflow-hidden bg-navy-dark flex flex-col transition-all duration-500 ${
-      isPromoVisible ? "pt-44 lg:pt-48" : "pt-24 lg:pt-32"
-    }`}>
+    <section className={`relative min-h-screen w-full overflow-hidden bg-navy-dark flex flex-col transition-all duration-500 ${isPromoVisible ? "pt-40 lg:pt-48" : "pt-24 lg:pt-32"
+      }`}>
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full">
         {/* Desktop Version */}
@@ -51,14 +50,14 @@ export default function Hero() {
       <div className="container mx-auto px-6 relative z-30 flex-1 flex flex-col justify-start">
         <div className="max-w-4xl py-6 md:py-12">
           {/* Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-gold/30 bg-gold/5 mb-8 backdrop-blur-sm"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_10px_#e5c05b] animate-pulse" />
             <span className="text-gold uppercase tracking-[0.5em] text-[9px] font-black">Líder em Transporte Executivo</span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main Title */}
           <motion.h1
@@ -68,8 +67,8 @@ export default function Hero() {
             className="text-5xl md:text-7xl lg:text-[5rem] font-heading font-bold leading-[1.1] tracking-tighter mb-8 text-white"
           >
             VIAJAR BEM <br />
-             <span className="gold-gradient italic pr-4">NÃO É PRIVILÉGIO</span><br />
-            <span className="gold-gradient italic pr-4">DE POUCOS.</span>
+            <span className="gold-gradient italic pr-2 inline-block">NÃO É PRIVILÉGIO</span><br />
+            <span className="gold-gradient italic pr-2 inline-block">DE POUCOS.</span>
           </motion.h1>
 
           {/* Subtext */}

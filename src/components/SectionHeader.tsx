@@ -27,7 +27,7 @@ export default function SectionHeader({
   const isDescriptionBelow = center || descriptionBelow;
 
   return (
-    <div className={`flex flex-col ${center ? "items-center text-center" : "md:flex-row justify-between items-end"} mb-16 gap-8 ${className}`}>
+    <div className={`flex flex-col ${center ? "items-center text-center" : "md:flex-row justify-between "} mb-16 gap-8 ${className}`}>
       <div className="max-w-5xl">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
@@ -68,7 +68,7 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="max-w-md text-white/50 text-right hidden lg:block text-sm md:text-base leading-relaxed"
+          className="max-w-md items-end! text-white/50 text-right hidden lg:flex text-sm md:text-base leading-relaxed "
         >
           {description}
         </motion.p>

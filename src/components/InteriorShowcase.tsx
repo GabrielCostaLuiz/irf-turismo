@@ -71,10 +71,7 @@ export default function InteriorShowcase() {
                   <p className="text-white/70 text-sm leading-relaxed">{video.desc}</p>
                 </div>
 
-                {/* Vertical Video Indicator */}
-                <div className="absolute top-6 right-6 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[8px] font-black uppercase tracking-[0.2em] text-white/80">
-                  Real 4K
-                </div>
+              
               </div>
               
               {/* Decoration behind */}
