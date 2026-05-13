@@ -1,46 +1,46 @@
 "use client";
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { useUI } from "@/context/UIContext";
 
 export default function PromoBanner() {
-  const [isVisible, setIsVisible] = useState(true);
+  const { isPromoVisible, setIsPromoVisible } = useUI();
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isPromoVisible && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="relative z-10 bg-white/5 border-b border-white/10 text-white px-4 py-3"
+          className="relative z-10 bg-gold-premium text-navy-dark px-4 py-2.5 shadow-lg"
         >
-          <div className="container mx-auto flex items-center justify-between gap-4">
+          <div className="container mx-auto px-6 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="hidden md:flex w-10 h-10 rounded-full bg-gold/10 text-gold items-center justify-center">
+              <div className="hidden md:flex w-9 h-9 rounded-full bg-black/10 text-navy-dark items-center justify-center">
                 <Calendar size={18} />
               </div>
-              <p className="text-xs md:text-sm font-medium tracking-tight">
-                <span className="text-gold font-bold uppercase tracking-widest mr-2">Aviso:</span>
-                Agenda de Eventos 2024 aberta! <span className="hidden md:inline text-white/50">— Garanta sua data com condições exclusivas.</span>
+              <p className="text-[10px] md:text-sm font-bold tracking-tight leading-tight">
+                <span className="uppercase tracking-widest mr-1 opacity-60">Aviso:</span>
+                Agenda Rodeio de Americana 2026 aberta! <span className="hidden md:inline opacity-60 font-medium">— Garanta sua vaga com transporte VIP.</span>
               </p>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a 
-                href={siteConfig.phone.whatsapp}
-                className="text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
+                href="#eventos"
+                className="bg-black/10 hover:bg-black/20 px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest text-navy-dark transition-colors flex items-center gap-2 whitespace-nowrap"
               >
-                Consultar <ArrowRight size={14} />
+                Consultar <ArrowRight size={12} className="md:w-3.5 md:h-3.5" />
               </a>
               <button 
-                onClick={() => setIsVisible(false)}
-                className="p-1 hover:bg-white/10 rounded-full transition-colors text-white/30 hover:text-white"
+                onClick={() => setIsPromoVisible(false)}
+                className="p-1 hover:bg-black/10 rounded-full transition-colors text-black/30 hover:text-navy-dark shrink-0"
                 aria-label="Fechar anúncio"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
           </div>

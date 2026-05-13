@@ -43,7 +43,7 @@ const galleryItems = [
     title: "Festivais de Inverno",
     location: "Campos do Jordão",
     category: "Turismo",
-    image: "https://images.unsplash.com/photo-1517230814606-2e229f5d419b?q=80&w=800&auto=format",
+    image: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=800&auto=format",
     size: "large"
   },
   {
@@ -51,14 +51,14 @@ const galleryItems = [
     title: "Praias do Nordeste",
     location: "Viagens Longas",
     category: "Lazer",
-    image: "https://images.unsplash.com/photo-1506929113675-b9299d39bb14?q=80&w=800&auto=format",
+    image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=800&auto=format",
     size: "small"
   }
 ];
 
 export default function EventGallery() {
   return (
-    <section id="portfolio" className="py-32 bg-navy-dark relative overflow-hidden">
+    <section id="galeria" className="py-32 bg-navy-dark relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-sparkle opacity-10 pointer-events-none" />
       
@@ -68,7 +68,6 @@ export default function EventGallery() {
           titleNormal="Momentos que"
           titleHighlight="ficam na memória"
           description="De transfers pontuais a viagens de lazer inesquecíveis. Veja onde já estivemos com nossos clientes."
-          icon={Camera}
           descriptionBelow
           className="mb-20"
         />

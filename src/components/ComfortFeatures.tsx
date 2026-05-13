@@ -1,51 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Wifi, User, Tv, Wind, Coffee, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Wifi, User, Tv, Wind, Coffee, ShieldCheck, ArrowUpRight, Sparkles, Accessibility, UserCheck, Armchair } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import SectionHeader from "./SectionHeader";
 
-const features = [
+/* 
+Antigo array de features mantido conforme solicitado:
+const oldFeatures = [
   {
     icon: <Wifi size={18} />,
     title: "Wi-Fi de Alta Velocidade",
-    desc: "Conexão estável e ultra veloz durante todo o seu trajeto, permitindo que você realize reuniões de trabalho, responda e-mails ou curta seu entretenimento favorito sem interrupções."
+    desc: "Conexão estável e ultra veloz durante todo o seu trajeto..."
   },
   {
     icon: <User size={18} />,
     title: "Motoristas Bilíngues",
-    desc: "Equipe de profissionais altamente treinados, discretos e com domínio de idiomas estrangeiros, garantindo uma comunicação fluida e um atendimento de padrão internacional para todos os passageiros."
+    desc: "Equipe de profissionais altamente treinados..."
+  },
+  // ... rest of the code here
+];
+*/
+
+const features = [
+  {
+    icon: <Wind size={20} />,
+    title: "Ar-condicionado",
+    desc: "Climatização digital inteligente com dutos individuais, garantindo temperatura ideal e renovação do ar total.",
+    image: "/images/ar-2.png"
   },
   {
-    icon: <Tv size={18} />,
-    title: "Entretenimento VIP",
-    desc: "Equipado com sistema de áudio de alta fidelidade e telas de alta definição, transformamos seu deslocamento em uma verdadeira sala de cinema privativa com máximo conforto acústico."
+    icon: <Armchair size={20} />,
+    title: "Poltronas Reclináveis",
+    desc: "Interior em couro legítimo com poltronas ergonômicas ultra confortáveis e múltiplos níveis de reclinação total.",
+    image: "/images/banco.jpeg"
   },
   {
-    icon: <Wind size={18} />,
-    title: "Ar Condicionado Digital",
-    desc: "Sistema de climatização inteligente com controle digital individualizado, permitindo ajustar a temperatura ideal para cada zona da van e garantindo o bem-estar térmico de todos."
+    icon: <Sparkles size={20} />,
+    title: "Iluminação LED Premium",
+    desc: "Ambiente sofisticado com cromoterapia e luzes indiretas projetadas para o relaxamento e bem-estar visual total.",
+    image: "/images/led.jpeg"
   },
   {
-    icon: <Coffee size={18} />,
-    title: "Serviço de Bordo",
-    desc: "Desfrute de uma seleção premium de águas minerais, snacks finos e mimos exclusivos, pensados detalhadamente para tornar sua jornada ainda mais prazerosa e revigorante."
+    icon: <Accessibility size={20} />,
+    title: "Acessibilidade Total",
+    desc: "Frota equipada com sistemas modernos de acesso para cadeirantes, garantindo segurança e inclusão premium total.",
+    image: "/images/van-accessibility.png"
   },
   {
-    icon: <ShieldCheck size={18} />,
-    title: "Segurança Avançada",
-    desc: "Monitoramento em tempo real via satélite, seguro total para passageiros e manutenção preventiva rigorosa, seguindo os mais altos padrões de segurança viária para sua total tranquilidade."
+    icon: <Tv size={20} />,
+    title: "Televisão",
+    desc: "Sistema de entretenimento com telas de alta definição e som surround para uma jornada premium muito prazerosa.",
+    image: "/images/tv.jpeg"
+  },
+  {
+    icon: <UserCheck size={20} />,
+    title: "Motorista Profissional",
+    desc: "Condutores especialistas em atendimento executivo, treinados para garantir uma jornada pontual e segura total.",
+    image: "/images/motorista.png"
   }
 ];
 
 export default function ComfortFeatures() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section id="van" className="py-32 bg-white/5 border-y border-white/10 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header Area */}
+        {/* Header Area Area mantida intacta */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-24 gap-8">
           <SectionHeader 
             subtitle="Luxo em Movimento"
@@ -53,7 +79,7 @@ export default function ComfortFeatures() {
             titleHighlight="nível de conforto"
             description="Cada detalhe da nossa frota foi pensado para oferecer uma experiência de primeira classe. Sua jornada será tão memorável quanto o destino."
             descriptionBelow
-            className="mb-0"
+            className="mb-0!"
           />
           
           <div className="flex flex-col items-end gap-4">
@@ -75,46 +101,76 @@ export default function ComfortFeatures() {
           </div>
         </div>
 
-        {/* Content Grid */}
+        {/* Content Grid Interativo */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Features Grid */}
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
+          {/* Features Selector */}
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
             {features.map((f, i) => (
-              <motion.div 
+              <motion.button 
                 key={i}
+                onClick={() => setActiveIndex(i)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex flex-col h-full"
+                className={`flex flex-col items-start text-left group relative p-8 rounded-[40px] transition-all duration-500 border h-full ${
+                  activeIndex === i 
+                    ? "bg-gold/10 border-gold/30 shadow-[0_30px_60px_rgba(0,0,0,0.3)] scale-[1.02] z-20" 
+                    : "bg-transparent border-transparent hover:bg-white/5 z-10"
+                }`}
               >
-                <div className="flex-grow">
-                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-6 text-gold border border-gold/20">
+                <div className="grow">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-8 border transition-all duration-500 ${
+                    activeIndex === i ? "bg-gold text-navy-dark border-gold shadow-[0_0_20px_rgba(229,192,91,0.3)]" : "bg-gold/10 text-gold border-gold/20"
+                  }`}>
                     {f.icon}
                   </div>
-                  <h4 className="text-white font-bold text-lg mb-4">{f.title}</h4>
-                  <p className="text-white/40 text-xs leading-relaxed mb-6">
+                  <h4 className={`font-bold text-xl mb-4 transition-colors duration-500 ${
+                    activeIndex === i ? "text-gold" : "text-white"
+                  }`}>
+                    {f.title}
+                  </h4>
+                  <p className={`text-xs leading-relaxed mb-8 transition-colors duration-500 ${
+                    activeIndex === i ? "text-white/80" : "text-white/40"
+                  }`}>
                     {f.desc}
                   </p>
                 </div>
-                <div className="w-full h-px bg-white/10" />
-              </motion.div>
+                <div className={`w-full h-px transition-colors duration-500 mt-auto ${
+                  activeIndex === i ? "bg-gold/40" : "bg-white/10"
+                }`} />
+              </motion.button>
             ))}
           </div>
 
-          {/* Right Side Image */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="lg:col-span-4 relative h-[600px] rounded-[40px] overflow-hidden shadow-2xl border border-white/5"
-          >
-            <Image 
-              src="/images/van-interior.png" 
-              alt="Comfort Detail" 
-              fill 
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-          </motion.div>
+          {/* Right Side Image Display */}
+          <div className="lg:col-span-4">
+            <motion.div 
+              layout
+              className="relative h-[600px] rounded-[48px] overflow-hidden shadow-2xl border border-white/5"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={features[activeIndex].image} 
+                    alt={features[activeIndex].title} 
+                    fill 
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  
+             
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

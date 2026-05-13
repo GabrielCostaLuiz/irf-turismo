@@ -1,6 +1,8 @@
 export const siteConfig = {
   name: "I.R.F Turismo",
   fullName: "I.R.F Turismo & Transportes",
+  tagline: "Viajar bem deve ser acessível para todos.",
+  description: "Unimos sofisticação e acessibilidade para que cada cliente se sinta cuidado e valorizado em cada detalhe.",
   url: "https://irfturismo.com.br",
   email: "irftransportes@hotmail.com",
   phone: {
@@ -10,9 +12,25 @@ export const siteConfig = {
   social: {
     instagram: "https://www.instagram.com/irfturismo/",
   },
+  brand: {
+    mission: "Oferecer viagens de alto padrão com preços acessíveis, planejando cada detalhe com atenção, segurança e leveza, para que você viva momentos únicos sem preocupações.",
+    purpose: "Conectar pessoas a experiências transformadoras, criando memórias que fortalecem laços e duram para a vida toda.",
+    differential: "Conforto de alto padrão com preços acessíveis e atendimento próximo e personalizado.",
+  },
+  van: {
+    capacity: "18 Lugares",
+    features: [
+      "Ar-condicionado",
+      "Poltronas reclináveis em couro",
+      "Iluminação LED premium",
+      "Acessibilidade para cadeirantes",
+      "Conforto e pontualidade",
+    ],
+  },
   images: {
-    logo: "/images/logo.png",
+    logo: "/images/logo-irf.png",
     hero: "/images/van-exterior.png",
+    og: "/images/bg-irf.jpeg",
   },
   seo: {
     title: "I.R.F Turismo | Transporte Executivo e Logística para Eventos",

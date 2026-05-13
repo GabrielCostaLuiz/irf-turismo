@@ -8,129 +8,116 @@ import SectionHeader from "./SectionHeader";
 const reasons = [
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Segurança Certificada",
-    description: "Nossa frota passa por manutenções rigorosas e todos os passageiros contam com seguro total. Monitoramento em tempo real em todas as viagens.",
-    details: ["Seguro passageiro APP", "Manutenção preventiva quinzenal", "Rastreamento via satélite"]
+    title: "Segurança Rigorosa",
+    description: "Nossa van conta com todas as vistorias em dia e manutenções preventivas rigorosas. Garantimos uma viagem tranquila com seguro total para todos os passageiros.",
+    details: ["Vistorias ANTT em dia", "Manutenção preventiva mensal", "Seguro passageiro completo"]
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "Pontualidade Britânica",
-    description: "Entendemos o valor do seu tempo. Planejamos rotas inteligentes para garantir que você chegue ao seu destino sem atrasos.",
-    details: ["Monitoramento de tráfego em tempo real", "Check-in antecipado", "Rotas alternativas otimizadas"]
+    description: "Entendemos o valor do seu tempo. Planejamos rotas inteligentes para garantir que você chegue ao seu destino sem atrasos e com máximo conforto.",
+    details: ["Monitoramento de rotas", "Check-in antecipado", "Compromisso com o horário"]
   },
   {
     icon: <Award className="w-6 h-6" />,
-    title: "Atendimento Premium",
-    description: "Motoristas treinados para oferecer um serviço de concierge. Discrição, cordialidade e auxílio completo com bagagens.",
-    details: ["Motoristas bilíngues sob demanda", "Treinamento em direção defensiva", "Concierge de bordo"]
+    title: "Atendimento Cordial",
+    description: "Motorista profissional dedicado a oferecer um serviço de excelência. Conte com total discrição, cordialidade e auxílio completo com suas bagagens.",
+    details: ["Motorista experiente", "Auxílio com bagagens", "Discrição e pontualidade"]
   }
 ];
 
 export default function WhyChooseUs() {
-  const [activeReason, setActiveReason] = useState(0);
-
   return (
-    <section id="faq" className="py-24 bg-white/5 border-y border-white/10 relative overflow-hidden">
+    <section id="faq" className="py-24 bg-white/5 relative overflow-hidden border-y border-white/10">
+      {/* Background Decor - Mantido conforme solicitado */}
       <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-20 pointer-events-none" />
-      
-      {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-navy-light/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <SectionHeader 
-          subtitle="Padrão I.R.F de Qualidade"
-          titleNormal="Por que somos a escolha de"
-          titleHighlight="quem exige o melhor?"
+        <SectionHeader
+          subtitle="Compromisso com a Excelência"
+          titleNormal="A Diferença que Apenas a"
+          titleHighlight="I.R.F Oferece"
           center
-          className="mb-20"
+          className="mb-24"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Reasons List */}
-          <div className="lg:col-span-5 space-y-4">
-            {reasons.map((reason, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setActiveReason(index)}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`w-full text-left p-8 rounded-3xl border transition-all duration-500 flex items-center gap-6 group ${
-                  activeReason === index 
-                  ? "bg-white/10 border-gold/30 shadow-2xl shadow-gold/5" 
-                  : "bg-white/5 border-white/5 hover:border-white/20"
-                }`}
-              >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                  activeReason === index ? "bg-gold text-navy-dark scale-110" : "bg-white/5 text-gold"
-                }`}>
-                  {reason.icon}
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-bold text-lg mb-1 transition-colors ${
-                    activeReason === index ? "text-white" : "text-white/60"
-                  }`}>
+        <div className="mt-16 flex flex-col">
+          {reasons.map((reason, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`group py-16 border-b border-white/5 last:border-0 relative ${
+                index % 2 === 0 ? "text-left" : "text-left lg:text-right"
+              }`}
+            >
+              {/* Large ID Background */}
+              <div className={`absolute top-1/2 -translate-y-1/2 text-[120px] font-black text-white/2 group-hover:text-gold/5 transition-colors pointer-events-none select-none ${
+                index % 2 === 0 ? "left-0" : "right-0"
+              }`}>
+                0{index + 1}
+              </div>
+
+              <div className={`flex flex-col lg:flex-row items-start lg:items-center gap-12 relative z-10 ${
+                index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+              }`}>
+                
+                {/* Icon & Title Block */}
+                <div className="flex-1 space-y-4">
+                  <div className={`flex items-center gap-4 ${index % 2 !== 0 && "lg:flex-row-reverse"}`}>
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-500">
+                      {reason.icon}
+                    </div>
+                    <span className="text-gold text-xs font-bold uppercase tracking-[0.4em]">Motivo 0{index + 1}</span>
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white group-hover:text-gold transition-colors duration-500">
                     {reason.title}
                   </h3>
-                  <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest transition-opacity ${
-                    activeReason === index ? "text-gold" : "opacity-0"
+                </div>
+
+                {/* Description Block */}
+                <div className="flex-1 space-y-8">
+                  <p className={`text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-xl ${
+                    index % 2 !== 0 && "lg:ml-auto"
                   }`}>
-                    Explorar <ChevronRight size={12} />
+                    {reason.description}
+                  </p>
+                  
+                  {/* Details Tags */}
+                  <div className={`flex flex-wrap gap-4 ${index % 2 !== 0 && "lg:justify-end"}`}>
+                    {reason.details.map((detail, idx) => (
+                      <div 
+                        key={idx} 
+                        className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gold/60 group-hover:border-gold/30 transition-colors"
+                      >
+                        {detail}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </motion.button>
-            ))}
-          </div>
 
-          {/* Active Detail Display */}
-          <motion.div 
-            key={activeReason}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-7 bg-white/5 border border-white/10 rounded-[48px] p-8 md:p-16 backdrop-blur-xl"
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} size={16} className="text-gold fill-gold" />
-                ))}
               </div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Compromisso com Excelência</span>
-            </div>
-
-            <h3 className="text-3xl font-bold mb-6 text-white">{reasons[activeReason].title}</h3>
-            <p className="text-white/50 text-lg leading-relaxed mb-10">
-              {reasons[activeReason].description}
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {reasons[activeReason].details.map((detail, idx) => (
-                <div key={idx} className="flex items-center gap-4 text-white/80">
-                  <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center text-gold">
-                    <CheckCircle2 size={14} />
-                  </div>
-                  <span className="text-sm font-medium">{detail}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 pt-12 border-t border-white/5">
-              <div className="flex items-center gap-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gold/30">
-                  <div className="absolute inset-0 bg-gold/20 animate-pulse" />
-                </div>
-                <div>
-                  <p className="text-white font-bold">Logística Certificada</p>
-                  <p className="text-white/40 text-xs">Padrão Executivo IRF</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom Impact Phrase */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="mt-5 lg:mt-10 pt-10 text-center"
+        >
+          <p className="text-white/20 text-sm md:text-base font-light italic tracking-[0.3em]">
+            "Sua jornada merece a exclusividade e o padrão de excelência I.R.F Turismo."
+          </p>
+        </motion.div>
       </div>
     </section>
   );

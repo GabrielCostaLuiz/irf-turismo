@@ -7,24 +7,56 @@ import { siteConfig } from "@/config/site";
 
 export default function ReservationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: "",
+    whatsapp: "",
+    data: "",
+    passageiros: "1",
+    origem: "",
+    destino: "",
+    tipo: "Ida e Volta"
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulação de envio
+    
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return "";
+      const [year, month, day] = dateStr.split("-");
+      return `${day}/${month}/${year}`;
+    };
+
+    const message = `Olá meu nome é ${formData.nome} e gostaria de solicitar um orçamento:\n\n` +
+      `Data: ${formatDate(formData.data)}\n` +
+      `Passageiros: ${formData.passageiros}\n` +
+      `Origem: ${formData.origem}\n` +
+      `Destino: ${formData.destino}\n` +
+      `Tipo: ${formData.tipo}\n\n` +
+      `Aguardo o retorno!`;
+
+    const whatsappUrl = `https://wa.me/5511977674215?text=${encodeURIComponent(message)}`;
+    
     setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
       setIsSubmitting(false);
-      alert("Solicitação enviada com sucesso! Entraremos em contato via WhatsApp.");
-    }, 2000);
+    }, 800);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const isFormValid = 
+    formData.nome.trim() !== "" && 
+    formData.data !== "" && 
+    formData.passageiros !== "" && 
+    formData.origem.trim() !== "" && 
+    formData.destino.trim() !== "";
+
   return (
-    <section id="reservas" className="py-24 bg-navy-dark relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 bg-sparkle opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-sparkle opacity-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2" />
+    <section id="reservas" className="py-24 bg-navy-dark relative overflow-hidden scroll-mt-[133px]">
+  
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[48px] overflow-hidden shadow-2xl">
@@ -41,22 +73,13 @@ export default function ReservationForm() {
               </p>
 
               <div className="space-y-8">
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center text-gold">
+                <div className="flex items-center gap-4 md:gap-6">
+                  <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-gold/10 flex items-center justify-center text-gold">
                     <MessageSquare size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">Atendimento Imediato</h4>
-                    <p className="text-white/40 text-sm">Via WhatsApp ou E-mail</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center text-gold">
-                    <Calendar size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white">Flexibilidade</h4>
-                    <p className="text-white/40 text-sm">Cancelamento gratuito até 24h</p>
+                    <h4 className="font-bold text-white text-base md:text-lg leading-tight">Atendimento Imediato</h4>
+                    <p className="text-white/40 text-xs md:text-sm mt-1 leading-tight">Via WhatsApp ou E-mail</p>
                   </div>
                 </div>
               </div>
@@ -73,57 +96,86 @@ export default function ReservationForm() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Nome Completo</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
+                      Nome Completo <span className="text-gold">*</span>
+                    </label>
                     <input 
                       required
                       type="text" 
+                      name="nome"
+                      value={formData.nome}
+                      onChange={handleChange}
                       placeholder="Ex: João Silva"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all placeholder:text-white/10"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">WhatsApp</label>
-                    <input 
-                      required
-                      type="tel" 
-                      placeholder={siteConfig.phone.display}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all placeholder:text-white/10"
-                    />
+                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Tipo de Viagem</label>
+                    <div className="relative">
+                      <select 
+                        name="tipo"
+                        value={formData.tipo}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all appearance-none"
+                      >
+                        <option value="Só Ida" className="bg-navy-dark">Só Ida</option>
+                        <option value="Só Volta" className="bg-navy-dark">Só Volta</option>
+                        <option value="Ida e Volta" className="bg-navy-dark">Ida e Volta</option>
+                      </select>
+                      <MapPin className="absolute right-6 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={20} />
+                    </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Data do Serviço</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
+                      Data do Serviço <span className="text-gold">*</span>
+                    </label>
                     <div className="relative">
                       <input 
                         required
                         type="date" 
+                        name="data"
+                        value={formData.data}
+                        onChange={handleChange}
                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all appearance-none"
                       />
                       <Calendar className="absolute right-6 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={20} />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Passageiros</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
+                      Passageiros <span className="text-gold">*</span>
+                    </label>
                     <div className="relative">
-                      <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all appearance-none">
-                        <option value="1-5" className="bg-navy-dark">1 a 5 pessoas</option>
-                        <option value="6-10" className="bg-navy-dark">6 a 10 pessoas</option>
-                        <option value="11-15" className="bg-navy-dark">11 a 15 pessoas</option>
-                        <option value="15+" className="bg-navy-dark">Mais de 15</option>
-                      </select>
+                      <input 
+                        required
+                        type="number" 
+                        min="1"
+                        max="20"
+                        name="passageiros"
+                        value={formData.passageiros}
+                        onChange={handleChange}
+                        placeholder="Ex: 15"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all appearance-none"
+                      />
                       <Users className="absolute right-6 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none" size={20} />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Local de Origem</label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
+                    Local de Origem <span className="text-gold">*</span>
+                  </label>
                   <div className="relative">
                     <input 
                       required
                       type="text" 
+                      name="origem"
+                      value={formData.origem}
+                      onChange={handleChange}
                       placeholder="Endereço de partida ou Aeroporto"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all placeholder:text-white/10"
                     />
@@ -132,11 +184,16 @@ export default function ReservationForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">Destino</label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-white/40 ml-1">
+                    Destino Final <span className="text-gold">*</span>
+                  </label>
                   <div className="relative">
                     <input 
                       required
                       type="text" 
+                      name="destino"
+                      value={formData.destino}
+                      onChange={handleChange}
                       placeholder="Endereço de destino"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all placeholder:text-white/10"
                     />
@@ -146,15 +203,17 @@ export default function ReservationForm() {
 
                 <div className="pt-6">
                   <button 
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isFormValid}
                     type="submit"
-                    className="w-full bg-gold-premium py-5 rounded-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
+                    className="w-full bg-gold-premium py-4 md:py-5 rounded-2xl flex items-center justify-center gap-3 disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed group transition-all"
                   >
-                    {isSubmitting ? "Enviando..." : "Solicitar Orçamento Agora"}
-                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <span className="font-bold text-sm md:text-base">
+                      {isSubmitting ? "Enviando..." : "Solicitar Orçamento Agora"}
+                    </span>
+                    {!isSubmitting && <Send size={18} className="hidden md:block group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                   </button>
                   <p className="text-center text-white/30 text-[10px] mt-4 uppercase tracking-widest">
-                    Prometemos não enviar spam. Seus dados estão seguros.
+                    * Preenchimento obrigatório para orçamento.
                   </p>
                 </div>
               </form>

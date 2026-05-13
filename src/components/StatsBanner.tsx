@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Star, Shield, Sparkles } from "lucide-react";
 import Image from "next/image";
 
 const stats = [
@@ -13,53 +13,93 @@ const stats = [
 
 export default function StatsBanner() {
   return (
-    <section className="py-24 bg-white/5 border-y border-white/10 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-20 pointer-events-none" />
+    // <section className="py-32 bg-white/5 border-y border-gold/10 relative overflow-hidden">
+    <section className="py-32  relative overflow-hidden ">
+      {/* Background Image with low opacity */}
+      <div className="absolute inset-0  pointer-events-none">
+        <Image
+          src="/images/bg-irf-10.png"
+          alt="Background Texture"
+          fill
+          className="object-fill  "
+        />
+      </div>
+      
+
+      {/* Premium Shimmer Background Effects */}
+      {/* <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-sparkle opacity-30" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-gold/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-gold/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/5 rounded-full blur-[100px]" />
+      </div> */}
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center mb-20">
-          <motion.h2 
+        <div className="max-w-5xl mx-auto text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-10"
+          >
+            <Sparkles size={12} className="animate-pulse" />
+            Excelência Comprovada
+          </motion.div>
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white"
+            className="text-3xl md:text-6xl font-heading font-bold leading-[1.1] tracking-tight text-white flex flex-wrap items-center justify-center gap-x-4 gap-y-6"
           >
-            Por mais de uma década, 
-            <span className="inline-flex items-center gap-2 px-3 mx-2 border border-gold/30 rounded-full bg-gold/5">
-               <Image src="/images/logo.png" width={32} height={32} alt="Logo" className="object-contain" />
+            <span>Nesta</span>
+            <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
+              <Star size={28} fill="currentColor" />
             </span>
-            temos oferecido o melhor serviço de 
-            <span className="inline-block relative w-12 h-6 md:w-20 md:h-10 align-middle mx-2 rounded-full overflow-hidden border border-gold/30">
-               <Image src="/images/van-exterior.png" fill alt="Van" className="object-cover" />
+            <span>jornada de</span>
+            <span className="inline-flex items-center gap-3 px-1 py-1 border border-gold/30 rounded-3xl bg-gold/5 backdrop-blur-sm overflow-hidden w-24 h-12 relative">
+               <Image src="https://images.unsplash.com/photo-1468818438311-4bab781ab9b8?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill alt="Destino IRF" className="object-cover" />
             </span>
-            transporte executivo & logística para eventos.
+            <span>excelência,</span>
+            <br className="hidden lg:block" />
+            <span>elevamos o padrão</span>
+            <span className="inline-block relative w-20 h-10 md:w-28 md:h-14 align-middle rounded-3xl overflow-hidden border border-gold/30 shadow-2xl">
+               <Image src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill alt="Viajante IRF" className="object-cover" />
+            </span>
+            <span>com máxima</span>
+            <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/5 text-gold border border-gold/20 shadow-[0_0_20px_rgba(229,192,91,0.2)]">
+              <Shield size={28} fill="currentColor" />
+            </span>
+            <span className="gold-gradient italic pr-4">segurança.</span>
           </motion.h2>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-10"
+            className="mt-14"
           >
-            <a 
-              href="#servicos" 
-              className="inline-flex items-center gap-3 bg-gold text-navy-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-gold-light transition-all group"
+            <a
+              href="#servicos"
+              className="inline-flex items-center gap-4 bg-gold-premium px-12 py-5 rounded-full font-heading font-black uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(229,192,91,0.3)] hover:scale-105 transition-all group text-navy-dark"
             >
               Nossas Soluções
-              <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-16 border-t border-white/5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-20 border-t border-gold/30">
           {stats.map((stat, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="text-center lg:text-left"
+              className="text-center lg:text-left group"
             >
-              <div className="text-4xl md:text-5xl font-black gold-gradient mb-3">{stat.value}</div>
-              <p className="text-white/40 text-xs font-bold uppercase tracking-widest leading-relaxed max-w-[200px]">
+              <div className="text-5xl md:text-6xl font-black gold-gradient mb-4 group-hover:scale-110 transition-transform origin-left duration-500 tracking-tighter">
+                {stat.value}
+              </div>
+              <p className="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed max-w-[180px]">
                 {stat.label}
               </p>
             </motion.div>
