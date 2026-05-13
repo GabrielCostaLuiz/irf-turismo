@@ -11,7 +11,7 @@ export default function Hero() {
   const { isPromoVisible } = useUI();
 
   return (
-    <section className={`relative min-h-screen w-full overflow-hidden bg-navy-dark flex flex-col transition-all duration-500 ${isPromoVisible ? "pt-40 lg:pt-48" : "pt-24 lg:pt-32"
+    <section className={`relative min-h-screen w-full overflow-hidden bg-navy-dark flex flex-col transition-all duration-500 ${isPromoVisible ? "pt-36 lg:pt-48" : "pt-24 lg:pt-32"
       }`}>
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full">
