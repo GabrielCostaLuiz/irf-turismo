@@ -37,11 +37,11 @@ export default function Navbar() {
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled
-      ? "bg-navy-dark/80 backdrop-blur-xl shadow-2xl border-b border-gold/10"
-      : "bg-transparent"
-      } ${isMobileMenuOpen ? "z-[999]" : "z-50"}`}>
+      transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 transition-all duration-300  ${isScrolled
+        ? "border-b bg-navy-dark/80 backdrop-blur-xl shadow-2xl border-gold/10"
+        : "bg-transparent border-gold/5 "
+        } ${isMobileMenuOpen ? "z-[999]" : "z-50"}`}>
       <PromoBanner />
 
       <div className="container mx-auto px-6">
