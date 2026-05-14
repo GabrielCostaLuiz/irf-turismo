@@ -3,7 +3,7 @@ export const siteConfig = {
   fullName: "I.R.F Turismo & Transportes",
   tagline: "Viajar bem deve ser acessível para todos.",
   description: "Unimos sofisticação e acessibilidade para que cada cliente se sinta cuidado e valorizado em cada detalhe.",
-  url: "https://irfturismo.com.br",
+  url: "https://irf-turismo.vercel.app",
   email: "irftransportes@hotmail.com",
   phone: {
     display: "(11) 97767-4215",
