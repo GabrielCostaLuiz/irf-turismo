@@ -62,6 +62,7 @@ export default function InteriorShowcase() {
                   muted
                   loop
                   playsInline
+                  title={video.title}
                   className="w-full h-full object-cover"
                 />
                 

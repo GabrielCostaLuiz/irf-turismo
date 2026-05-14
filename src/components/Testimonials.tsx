@@ -67,7 +67,7 @@ export default function Testimonials() {
             <div key={index} className="relative group h-full">
               <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-[40px] p-10 flex flex-col justify-between">
                 <Quote className="text-gold opacity-20 mb-8" size={48} />
-                <p className="text-lg text-white/80 italic leading-relaxed mb-10">"{testimonial.content}"</p>
+                <p className="text-lg text-white/80 italic leading-relaxed mb-10">&quot;{testimonial.content}&quot;</p>
                 <div className="flex items-center gap-4">
                   <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold/30">
                     <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" />
@@ -100,7 +100,7 @@ export default function Testimonials() {
                     <Quote className="text-gold opacity-20 mb-8" size={48} />
                     
                     <p className="text-lg text-white/80 italic leading-relaxed mb-10 relative z-10">
-                      "{testimonial.content}"
+                      &quot;{testimonial.content}&quot;
                     </p>
 
                     <div className="flex items-center gap-4">

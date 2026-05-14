@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, Star, CheckCircle2, ChevronRight, Award as AwardIcon } from "lucide-react";
-import { useState } from "react";
+import { Shield, Clock, Award } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const reasons = [
@@ -116,7 +115,7 @@ export default function WhyChooseUs() {
           className=" text-center"
         >
           <p className="text-white/20 text-sm md:text-base font-light italic tracking-[0.3em] md:mt-10">
-            "Sua jornada merece a exclusividade e o padrão de excelência I.R.F Turismo."
+          &quot;Sua jornada merece a exclusividade e o padrão de excelência I.R.F Turismo.&quot;
           </p>
         </motion.div>
       </div>

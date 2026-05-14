@@ -98,7 +98,7 @@ export default function ReservationForm() {
 
               <div className="mt-16 p-6 rounded-3xl bg-gold/5 border border-gold/10">
                 <p className="text-gold text-sm italic font-medium">
-                  "Comprometidos com a pontualidade e segurança em cada km percorrido."
+                  &quot;Comprometidos com a pontualidade e segurança em cada km percorrido.&quot;
                 </p>
               </div>
             </motion.div>

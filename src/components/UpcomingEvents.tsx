@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Users, ArrowRight, Ticket } from "lucide-react";
 import Image from "next/image";
-import { siteConfig } from "@/config/site";
+
 
 import SectionHeader from "./SectionHeader";
 

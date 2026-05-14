@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Plane, PartyPopper, Briefcase, Map, Music, Navigation, ChevronRight } from "lucide-react";
+import { Plane, PartyPopper, Briefcase, Map, Music, Navigation, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import SectionHeader from "./SectionHeader";
 

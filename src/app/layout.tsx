@@ -15,12 +15,16 @@ const rubik = Rubik({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.fullName,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.seo.description,
   keywords: siteConfig.seo.keywords,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: siteConfig.images.logo,
   },
@@ -55,6 +59,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": siteConfig.fullName,
+    "image": siteConfig.url + siteConfig.images.hero,
+    "@id": siteConfig.url,
+    "url": siteConfig.url,
+    "telephone": siteConfig.phone.display,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -23.55052,
+      "longitude": -46.633308
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      siteConfig.social.instagram
+    ]
+  };
+
   return (
     <html
       lang="pt-BR"
@@ -62,6 +104,10 @@ export default function RootLayout({
     >
       <head>
         <meta name="apple-mobile-web-app-title" content="I.R.F. Turismo" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <UIProvider>{children}</UIProvider>

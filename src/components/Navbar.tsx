@@ -41,7 +41,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 transition-all duration-300  ${isScrolled
         ? "border-b bg-navy-dark/80 backdrop-blur-xl shadow-2xl border-gold/10"
         : "bg-transparent border-gold/5 "
-        } ${isMobileMenuOpen ? "z-[999]" : "z-50"}`}>
+        } ${isMobileMenuOpen ? "z-999" : "z-50"}`}>
       <PromoBanner />
 
       <div className="container mx-auto px-6">
@@ -135,11 +135,11 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at 90% 50px)", opacity: 1 }}
             exit={{ clipPath: "circle(0% at 90% 50px)", opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 h-screen w-screen bg-[#071529] z-[1000] flex flex-col px-11 py-4 lg:hidden overflow-y-auto"
+            className="fixed inset-0 h-screen w-screen bg-navy-dark z-1000 flex flex-col px-11 py-4 lg:hidden overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-10">
               <div className="relative w-12 h-12">
-                <Image src={siteConfig.images.logo} alt="Logo" fill className="object-contain" />
+                <Image src={siteConfig.images.logo} alt={`${siteConfig.name} Logo`} fill className="object-contain" />
               </div>
               <button onClick={() => setIsMobileMenuOpen(false)} className="text-white">
                 <X size={32} />

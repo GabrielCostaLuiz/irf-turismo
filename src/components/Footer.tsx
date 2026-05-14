@@ -50,8 +50,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-white/50 text-xl font-light leading-relaxed max-w-md italic">
-              "Redefinindo o padrão de transporte executivo com sofisticação, 
-              segurança e a exclusividade que você merece."
+              &quot;Redefinindo o padrão de transporte executivo com sofisticação, 
+              segurança e a exclusividade que você merece.&quot;
             </p>
 
             <div className="flex items-center gap-6">

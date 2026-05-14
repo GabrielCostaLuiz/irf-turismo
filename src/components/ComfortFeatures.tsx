@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Wifi, User, Tv, Wind, Coffee, ShieldCheck, Sparkles, Accessibility, UserCheck, Armchair, ArrowUpRight } from "lucide-react";
+import { Tv, Wind, Sparkles, Accessibility, UserCheck, Armchair, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import SectionHeader from "./SectionHeader";
