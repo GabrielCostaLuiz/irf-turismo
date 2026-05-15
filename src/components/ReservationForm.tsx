@@ -55,7 +55,7 @@ export default function ReservationForm() {
     formData.destino.trim() !== "";
 
   return (
-    <section id="reservas" className="py-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
+    <section id="reservas" className="pb-24 md:pt-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
 
 
       <div className="container mx-auto px-6 relative z-10">

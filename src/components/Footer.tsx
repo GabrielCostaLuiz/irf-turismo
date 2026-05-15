@@ -135,9 +135,9 @@ export default function Footer() {
               <ul className="space-y-4">
                 {[
                   { label: 'Serviços', href: '#servicos' },
-                  { label: 'Van', href: '#van' },
+                  { label: 'Conforto', href: '#van' },
                   { label: 'Eventos', href: '#eventos' },
-                  { label: 'Galeria', href: '#galeria' },
+                  { label: 'Tour Interno', href: '#experiencia' },
                   { label: 'Contato', href: '#reservas' }
                 ].map((item) => (
                   <li key={item.label}>
