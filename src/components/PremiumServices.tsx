@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Plane, PartyPopper, Briefcase, Map, Music, Navigation, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import SectionHeader from "./SectionHeader";
+import { useUI } from "@/context/UIContext";
 
 const services = [
   {
@@ -63,6 +64,7 @@ const services = [
 ];
 
 export default function PremiumServices() {
+  const { isPhotosEnabled } = useUI();
   return (
     <section id="servicos" className="py-24 bg-navy-dark relative overflow-hidden lg:scroll-mt-[133px]">
 
@@ -91,22 +93,24 @@ export default function PremiumServices() {
 
               <div className="relative z-10 py-12 md:py-16 px-4 md:px-10 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
                 {/* ID & Photo */}
-                <div className="flex items-center gap-8 md:w-1/4">
+                <div className={`flex items-center gap-8 ${isPhotosEnabled ? "md:w-1/4" : "md:w-20 lg:w-32"}`}>
                   <span className="text-4xl md:text-5xl font-black text-white/5 group-hover:text-gold/20 transition-colors leading-none tracking-tighter shrink-0">
                     {service.id}
                   </span>
-                  <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-2xl overflow-hidden border border-white/10 group-hover:border-gold/30 transition-all duration-500 shadow-2xl">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-colors" />
-                  </div>
+                  {isPhotosEnabled && (
+                    <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-2xl overflow-hidden border border-white/10 group-hover:border-gold/30 transition-all duration-500 shadow-2xl">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-navy-dark/20 group-hover:bg-transparent transition-colors" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Title & Subtitle */}
-                <div className="md:w-1/3">
+                <div className={isPhotosEnabled ? "md:w-1/3" : "md:w-5/12"}>
                   <span className="text-gold/60 text-[10px] font-black uppercase tracking-[0.4em] mb-2 block">
                     {service.subtitle}
                   </span>

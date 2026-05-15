@@ -1,21 +1,19 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Showcase from "@/components/Showcase";
+
 import StatsBanner from "@/components/StatsBanner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PremiumServices from "@/components/PremiumServices";
 import ComfortFeatures from "@/components/ComfortFeatures";
 import InteriorShowcase from "@/components/InteriorShowcase";
-import EventGallery from "@/components/EventGallery";
-import Testimonials from "@/components/Testimonials";
+
 import WhatsAppButton from "@/components/WhatsAppButton";
-import PromoBanner from "@/components/PromoBanner";
+import PhotoToggleButton from "@/components/PhotoToggleButton";
+
 import ReservationForm from "@/components/ReservationForm";
 import UpcomingEvents from "@/components/UpcomingEvents";
-import Image from "next/image";
-import { MapPin, Mail, Phone } from "lucide-react";
-import { InstagramIcon } from "@/components/Icons";
-import { siteConfig } from "@/config/site";
+import TextDivider from "@/components/TextDivider";
+
 
 import Footer from "@/components/Footer";
 
@@ -28,17 +26,17 @@ export default function Home() {
       <PremiumServices />
       <ComfortFeatures />
       <UpcomingEvents />
-      <EventGallery />
+
       <WhyChooseUs />
       <InteriorShowcase />
-      {/* <Testimonials /> */}
-      {/* <Showcase /> */}
+      {/* <TextDivider /> */}
 
       <ReservationForm />
 
       <Footer />
 
       <WhatsAppButton />
+      <PhotoToggleButton />
     </main>
   );
 }

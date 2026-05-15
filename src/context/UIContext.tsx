@@ -7,6 +7,8 @@ interface UIContextType {
   setIsPromoVisible: (visible: boolean) => void;
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
+  isPhotosEnabled: boolean;
+  setIsPhotosEnabled: (enabled: boolean) => void;
 }
 
 const UIContext = createContext<UIContextType | undefined>(undefined);
@@ -14,13 +16,16 @@ const UIContext = createContext<UIContextType | undefined>(undefined);
 export function UIProvider({ children }: { children: React.ReactNode }) {
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPhotosEnabled, setIsPhotosEnabled] = useState(true);
 
   return (
     <UIContext.Provider value={{ 
       isPromoVisible, 
       setIsPromoVisible,
       isMobileMenuOpen,
-      setIsMobileMenuOpen
+      setIsMobileMenuOpen,
+      isPhotosEnabled,
+      setIsPhotosEnabled
     }}>
       {children}
     </UIContext.Provider>
