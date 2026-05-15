@@ -74,9 +74,9 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-8 border-l border-white/10 pl-10">
               {[
                 { name: "Serviços", href: "#servicos" },
-                { name: "Van", href: "#van" },
+                { name: "Conforto", href: "#van" },
                 { name: "Eventos", href: "#eventos" },
-                { name: "Galeria", href: "#galeria" },
+                { name: "Tour Interno", href: "#experiencia" },
                 { name: "Contato", href: "#reservas" },
               ].map((link, i) => (
                 <motion.div
@@ -149,9 +149,9 @@ export default function Navbar() {
             <nav className="flex flex-col gap-8">
               {[
                 { name: "SERVIÇOS", href: "#servicos" },
-                { name: "NOSSA VAN", href: "#van" },
+                { name: "CONFORTO", href: "#van" },
                 { name: "EVENTOS", href: "#eventos" },
-                { name: "GALERIA", href: "#galeria" },
+                { name: "TOUR INTERNO", href: "#experiencia" },
                 { name: "CONTATO", href: "#reservas" },
               ].map((link, i) => (
                 <motion.div

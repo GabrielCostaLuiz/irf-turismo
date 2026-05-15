@@ -67,9 +67,9 @@ export default function InteriorShowcase() {
                 />
                 
                 {/* Overlay with details */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
-                  <h3 className="text-2xl font-bold text-gold mb-2">{video.title}</h3>
-                  <p className="text-white/70 text-sm leading-relaxed">{video.desc}</p>
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-gold mb-2">{video.title}</h3>
+                  <p className="text-white/80 text-xs md:text-sm leading-relaxed">{video.desc}</p>
                 </div>
 
               
