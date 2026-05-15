@@ -8,7 +8,6 @@ import ComfortFeatures from "@/components/ComfortFeatures";
 import InteriorShowcase from "@/components/InteriorShowcase";
 
 import WhatsAppButton from "@/components/WhatsAppButton";
-import PhotoToggleButton from "@/components/PhotoToggleButton";
 
 import ReservationForm from "@/components/ReservationForm";
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -36,7 +35,6 @@ export default function Home() {
       <Footer />
 
       <WhatsAppButton />
-      <PhotoToggleButton />
     </main>
   );
 }

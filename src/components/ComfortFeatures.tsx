@@ -6,7 +6,6 @@ import { Tv, Wind, Sparkles, Accessibility, UserCheck, Armchair, ArrowUpRight } 
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import SectionHeader from "./SectionHeader";
-import { useUI } from "@/context/UIContext";
 
 /* 
 Antigo array de features mantido conforme solicitado:
@@ -66,7 +65,6 @@ const features = [
 
 export default function ComfortFeatures() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { isPhotosEnabled } = useUI();
 
   return (
     <section id="van" className="py-32 bg-white/5 border-y border-white/10 relative overflow-hidden">
@@ -105,22 +103,20 @@ export default function ComfortFeatures() {
 
         {/* Content Grid Interativo */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Fixed Photo for Mobile (When photos disabled) */}
-          {!isPhotosEnabled && (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="md:hidden w-full h-64 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl mb-8"
-            >
-              <Image
-                src="/images/van2.png"
-                alt="Nossa Van Premium"
-                width={800}
-                height={600}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          )}
+          {/* Fixed Photo for Mobile (Always show now) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden w-full h-64 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl mb-8"
+          >
+            <Image
+              src="/images/van2.png"
+              alt="Nossa Van Premium"
+              width={800}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
 
           {/* Features Selector */}
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
@@ -138,21 +134,11 @@ export default function ComfortFeatures() {
                   }`}
               >
                 <div className="grow">
-                  <div className={`w-full ${isPhotosEnabled ? "aspect-video" : "h-12 w-12"} md:w-12 md:h-12 rounded-2xl flex items-center justify-center mb-6 md:mb-8 border transition-all duration-500 overflow-hidden border-white/10 ${activeIndex === i ? "md:bg-gold md:text-navy-dark md:border-gold md:shadow-[0_0_20px_rgba(229,192,91,0.3)]" : "bg-gold/10 text-gold border-gold/20"
+                  <div className={`w-12 h-12 md:w-12 md:h-12 rounded-2xl flex items-center justify-center mb-6 md:mb-8 border transition-all duration-500 overflow-hidden ${activeIndex === i
+                    ? "bg-gold text-navy-dark border-gold shadow-[0_0_20px_rgba(229,192,91,0.3)]"
+                    : "bg-gold/10 text-gold border-gold/20"
                     }`}>
-                    <div className={`${!isPhotosEnabled ? "block" : "hidden md:block"}`}>
-                      {f.icon}
-                    </div>
-                    {isPhotosEnabled && (
-                      <div className="md:hidden relative w-full h-full">
-                        <Image
-                          src={f.image}
-                          alt={f.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    )}
+                    {f.icon}
                   </div>
                   <h4 className={`font-bold text-xl mb-4 transition-colors duration-500 text-white ${activeIndex === i ? "md:text-gold" : ""
                     }`}>
@@ -169,33 +155,22 @@ export default function ComfortFeatures() {
             ))}
           </div>
 
-          {/* Right Side Image Display */}
+          {/* Right Side Image Display (Always show fixed-van) */}
           <div className="hidden md:block lg:col-span-4">
             <motion.div
               layout
               className="relative h-[600px] rounded-[48px] overflow-hidden shadow-2xl border border-white/5"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={isPhotosEnabled ? activeIndex : "fixed-van"}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={isPhotosEnabled ? features[activeIndex].image : "/images/van2.png"}
-                    alt={isPhotosEnabled ? features[activeIndex].title : "Nossa Van Premium"}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
-
-
-                </motion.div>
-              </AnimatePresence>
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/van2.png"
+                  alt="Nossa Van Premium"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              </div>
             </motion.div>
           </div>
         </div>

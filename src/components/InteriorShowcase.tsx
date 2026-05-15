@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import { useUI } from "@/context/UIContext";
 import Image from "next/image";
 import { X, Maximize2 } from "lucide-react";
 
@@ -22,15 +21,11 @@ const videos = [
 
 const galleryImages = [
   { src: "/images/ar-2.png", title: "Ar-condicionado" },
-  { src: "/images/banco.jpeg", title: "Poltronas Reclináveis" },
   { src: "/images/led.jpeg", title: "Iluminação LED" },
-  { src: "/images/van-accessibility.png", title: "Acessibilidade" },
   { src: "/images/tv.jpeg", title: "Televisão" },
-  { src: "/images/motorista.png", title: "Motorista Profissional" }
 ];
 
 export default function InteriorShowcase() {
-  const { isPhotosEnabled } = useUI();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
@@ -98,8 +93,7 @@ export default function InteriorShowcase() {
         </div>
 
         {/* Conditional Gallery for "Text Mode" */}
-        {!isPhotosEnabled && (
-          <motion.div 
+        <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-32"
@@ -109,7 +103,7 @@ export default function InteriorShowcase() {
               <p className="text-white/40 text-sm max-w-xl mx-auto">Explore as fotos dos nossos diferenciais de conforto e tecnologia mesmo com o modo de economia ativado.</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-5xl mx-auto">
               {galleryImages.map((img, i) => (
                 <motion.div
                   key={i}
@@ -118,7 +112,7 @@ export default function InteriorShowcase() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedImage(img.src)}
-                  className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
+                  className="relative w-full max-w-[400px] md:w-64 aspect-square rounded-2xl overflow-hidden border border-white/10 group cursor-pointer shadow-2xl"
                 >
                   <Image
                     src={img.src}
@@ -134,8 +128,7 @@ export default function InteriorShowcase() {
               ))}
             </div>
           </motion.div>
-        )}
-      </div>
+        </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
